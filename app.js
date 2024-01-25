@@ -2,8 +2,12 @@ require('dotenv').config()
 const express = require('express')
 const expressLayout = require('express-ejs-layouts')
 
+const connectDb = require('./server/config/db')
+
 const app = express()
 const PORT = 5000 || process.env.PORT
+
+connectDb()
 
 app.use(express.static('public'))
 
