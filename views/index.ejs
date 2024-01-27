@@ -10,12 +10,14 @@
 
     <ul class="article-ul">
 
-        <li>
-        <a href="#">
-            <span>Post title</span>
-            <span class="article-list__date">Date</span>
-        </a>
-        </li>
+        <% data.forEach(post => { %>
+            <li>
+                <a href="/post/<%= post._id %>">
+                    <span><%= post.title %></span>
+                    <span class="article-list__date"><%= post.createdAt.toDateString() %></span>
+                </a>
+            </li>
+        <% }) %>
     </ul>
     <a href="#" class="pagination">&lt; View Older Posts</a>
 </section>

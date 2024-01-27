@@ -3,12 +3,18 @@ const router = express.Router()
 const Post = require('../models/Post')
 
 // Routes
-router.get('/',(req,res)=>{
+router.get('/', async (req,res)=>{
     const locals = {
         title : "NodeJs Blog",
         desc : "This is a simple blog created by nodejs express and mongodb"
     }
-    res.render('index',locals)
+
+    try {
+        const data = await Post.find()
+        res.render('index',{locals , data})
+    } catch (error) {
+        console.error(error);
+    }
 })
 
 router.get('/about',(req,res)=>{
